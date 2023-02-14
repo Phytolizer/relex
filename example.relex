@@ -1,0 +1,33 @@
+alias LETTER = [a-z]
+alias DIGIT = [0-9]
+alias STRING = "([^"\\\n]|\\(.|\n))*"
+
+tokens {
+    id
+    string
+    lparen
+    rparen
+    lbrack
+    rbrack
+    lbrace
+    rbrace
+    pipe
+    equal
+    dot
+}
+
+%%
+
+{LETTER}({LETTER}|{DIGIT})*   {return .id;}
+{STRING}                      {return .string;}
+\(                            {return .lparen;}
+\)                            {return .rparen;}
+\[                            {return .lbrack;}
+\]                            {return .rbrack;}
+\{                            {return .lbrace;}
+\}                            {return .rbrace;}
+\|                            {return .pipe;}
+=                             {return .equal;}
+\.                            {return .dot;}
+.                             {return .error;}
+{EOF}                         {return .eof;}
