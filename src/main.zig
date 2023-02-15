@@ -5,7 +5,7 @@ pub fn main() !void {
     var lexer = Lexer.new(@embedFile("example.relex"), .{ .filepath = "example.relex" });
     while (true) {
         const token = lexer.nextToken();
-        std.debug.print("{any}\n", .{token});
+        std.debug.print("{}\n", .{token});
         if (token.kind == .eof) break;
     }
 }
