@@ -1,5 +1,5 @@
 const std = @import("std");
-const Lexer = @import("lexer.zig").Lexer;
+const Lexer = @import("Lexer.zig");
 
 pub fn main() !void {
     var lexer = Lexer.new(@embedFile("example.relex"), .{ .filepath = "example.relex" });
