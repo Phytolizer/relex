@@ -1,11 +1,15 @@
 const std = @import("std");
-const Lexer = @import("Lexer.zig");
+const Parser = @import("Parser.zig");
 
 pub fn main() !void {
-    var lexer = Lexer.new(@embedFile("example.relex"), .{ .filepath = "example.relex" });
-    while (true) {
-        const token = lexer.nextToken();
-        std.debug.print("{}\n", .{token});
-        if (token.kind == .eof) break;
-    }
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer _ = gpa.deinit();
+    const a = gpa.allocator();
+
+    var parser = Parser.init(
+        @embedFile("example.relex"),
+        a,
+        .{ .filepath = "example.relex" },
+    );
+    defer parser.deinit();
 }

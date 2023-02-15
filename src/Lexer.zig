@@ -10,7 +10,7 @@ pub const Options = struct {
     filepath: ?[]const u8 = null,
 };
 
-pub fn new(source: []const u8, options: Options) @This() {
+pub fn init(source: []const u8, options: Options) @This() {
     return .{
         .source = source,
         .loc = .{
