@@ -32,10 +32,8 @@ pub const Kind = enum {
 };
 
 pub fn format(self: @This(), comptime _: []const u8, _: std.fmt.FormatOptions, writer: anytype) !void {
-    try writer.print("{s}:{d}:{d}: {s}: {s}", .{
-        self.loc.filepath,
-        self.loc.line,
-        self.loc.column,
+    try writer.print("{}: {s}: {s}", .{
+        self.loc,
         std.meta.tagName(self.kind),
         self.text,
     });
