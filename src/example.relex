@@ -1,7 +1,12 @@
+# Line comment.
+# No block comments.
+
+# alias declarations "alias NAME = REGEX"
 alias LETTER = [a-z]
 alias DIGIT = [0-9]
 alias STRING = "([^"\\\n]|\\(.|\n))*"
 
+# define token enum (no commas)
 tokens {
     id
     string
@@ -18,6 +23,7 @@ tokens {
 
 %%
 
+# can comment rule section too
 {LETTER}({LETTER}|{DIGIT})*   {return .id;}
 {STRING}                      {return .string;}
 \(                            {return .lparen;}
@@ -31,3 +37,5 @@ tokens {
 \.                            {return .dot;}
 .                             {return .error;}
 {EOF}                         {return .eof;}
+
+# no final section (for now?)
