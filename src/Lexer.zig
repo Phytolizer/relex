@@ -106,6 +106,12 @@ pub fn nextToken(self: *@This()) Token {
         '|' => kind = .pipe,
         '-' => kind = .dash,
         '.' => kind = .dot,
+        ';' => kind = .semicolon,
+        ',' => kind = .comma,
+        '*' => kind = .star,
+        '+' => kind = .plus,
+        '?' => kind = .question,
+        '^' => kind = .caret,
         '%' => {
             if (self.peekChar() orelse 0 == '%') {
                 _ = self.nextChar();

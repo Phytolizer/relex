@@ -5,6 +5,8 @@ kind: Kind,
 loc: SourceLocation,
 text: []const u8,
 
+/// Many tokens are only contextually valid.
+/// However, the lexer does no validation; only the parser does.
 pub const Kind = enum {
     @"error",
     eof,
@@ -15,9 +17,15 @@ pub const Kind = enum {
     right_bracket,
     left_paren,
     right_paren,
+    semicolon,
     equal,
     pipe,
     dash,
+    star,
+    plus,
+    question,
+    comma,
+    caret,
     dot,
     /// could be escaped with backslash
     literal_char,

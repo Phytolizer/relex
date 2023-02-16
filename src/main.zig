@@ -12,4 +12,6 @@ pub fn main() !void {
         .{ .filepath = "example.relex" },
     );
     defer parser.deinit();
+    const program = try parser.parse();
+    std.debug.print("{any}\n", .{program});
 }

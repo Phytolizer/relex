@@ -4,9 +4,9 @@
 # alias declarations "alias NAME = REGEX"
 # syntax: aliases may not contain whitespace unless escaped
 # space before and after '=' is ok
-alias LETTER = [a-z]
-alias DIGIT = [0-9]
-alias STRING = "([^"\\\n]|\\(.|\n))*"
+alias LETTER = [a-z];
+alias DIGIT = [0-9];
+alias STRING = "([^"\\\n]|\\(.|\n))*";
 
 # define token enum (no commas)
 tokens {
